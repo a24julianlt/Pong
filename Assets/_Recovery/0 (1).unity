@@ -2272,7 +2272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   pelota: {fileID: 1137601149}
-  pelotaController: {fileID: 1137601154}
   txtP1Score: {fileID: 483056043}
   txtP2Score: {fileID: 1905223020}
   txtInstruc: {fileID: 194593586}

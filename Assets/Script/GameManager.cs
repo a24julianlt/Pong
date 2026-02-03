@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     bool running = false;
 
     [SerializeField] GameObject pelota;
+    [SerializeField] PelotaController pelotaController;
+
 
     [SerializeField] TMP_Text txtP1Score;
     [SerializeField] TMP_Text txtP2Score;
@@ -36,6 +38,12 @@ public class GameManager : MonoBehaviour
     {
         if (!running && Input.GetKeyDown(KeyCode.Space))
         {
+
+            p1Score = 0;
+            txtP1Score.text = "0";
+            p2Score = 0;
+            txtP2Score.text = "0";
+
             txtWin1.gameObject.SetActive(false);
             txtWin2.gameObject.SetActive(false);
             
@@ -43,6 +51,7 @@ public class GameManager : MonoBehaviour
 
             // Activamos la pelota 
             pelota.SetActive(true);
+            pelotaController.ResetBall();
             // Indicamos que el juego ha comenzado
             running = true;
         }
@@ -56,7 +65,10 @@ public class GameManager : MonoBehaviour
         if (p1Score >= 5 || p2Score >= 5)
         {
             running = false;
-            if (p1Score >= 5)
+            pelota.SetActive(false);
+            txtInstruc.gameObject.SetActive(true);
+
+            if (p2Score >= 5)
             {
                 txtWin1.gameObject.SetActive(true);
             }
@@ -64,8 +76,6 @@ public class GameManager : MonoBehaviour
             {
                 txtWin2.gameObject.SetActive(true);
             }
-
-            Start();
         }
     }
 }

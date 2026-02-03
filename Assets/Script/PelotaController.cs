@@ -32,6 +32,16 @@ public class PelotaController : MonoBehaviour
         StartCoroutine(throwBall(directionX));
     }
 
+    public void ResetBall()
+    {
+        sfx = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>();
+
+        int directionX = Random.Range(0, 2) == 0 ? -1 : 1; // El límite superior es exclusivo (el 2 quedaría fuera).
+        StartCoroutine(throwBall(directionX));
+    }
+
+
     IEnumerator throwBall(int directionX)
     {
         sfx.clip = clip_start;
